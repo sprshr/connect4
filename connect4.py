@@ -56,18 +56,18 @@ def selection():
     selectedColumn = int(input())
 
 
-def changingColumns():
+def changeColumns():
     columns[selectedColumn - 1].insert(0, "O")
 
 
-def changingtable():
+def changetable():
     rows[5-((len(columns[selectedColumn-1]))-1)
-         ][selectedColumn - 1] = oSelected
+         ][selectedColumn - 1] = xSelected
 
 
-print("I'm X you're O Let's go!")
+print("You're X Let's go!")
 printTable()
 selection()
-changingColumns()
-changingtable()
+changeColumns()
+changetable()
 printTable()
