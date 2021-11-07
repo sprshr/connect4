@@ -1,37 +1,34 @@
 print("connect4 By Sepehr Sahraian")
 print("AP CSP Mr. Keithley")
 print('')
-columnNumber = [
-    "   1   ", "   2   ", "   3   ", "   4   ", "   5   ", "   6   ", "   7   "
-]
-row1 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
-row2 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
-row3 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
-row4 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
-row5 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
-row6 = [
-    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
-]
 
-column1 = []
-column2 = []
-column3 = []
-column4 = []
-column5 = []
-column6 = []
-column7 = []
 
 #global var
+global columns
+global rows
+
+
+columnNumber = (
+    "   1   ", "   2   ", "   3   ", "   4   ", "   5   ", "   6   ", "   7   "
+)
+
+rows = [[
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+], [
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+], [
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+], [
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+], [
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+], [
+    "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
+]]
+
+columns = [], [], [], [], [], [], []
+
+
 xSelected = "|  X  |"
 oSelected = "|  O  |"
 
@@ -40,25 +37,37 @@ def printTable():
     print('')
     print(columnNumber)
     print('')
-    print(row1)
+    print(rows[0])
     print('')
-    print(row2)
+    print(rows[1])
     print('')
-    print(row3)
+    print(rows[2])
     print('')
-    print(row4)
+    print(rows[3])
     print('')
-    print(row5)
+    print(rows[4])
     print('')
-    print(row6)
+    print(rows[5])
 
 
 def selection():
     print("Make a Selection 1-7")
-    global columnSelected
-    columnSelected = input()
+    global selectedColumn
+    selectedColumn = int(input())
+
+
+def changingColumns():
+    columns[selectedColumn - 1].insert(0, "O")
+
+
+def changingtable():
+    rows[5-((len(columns[selectedColumn-1]))-1)
+         ][selectedColumn - 1] = oSelected
 
 
 print("I'm X you're O Let's go!")
 printTable()
 selection()
+changingColumns()
+changingtable()
+printTable()
