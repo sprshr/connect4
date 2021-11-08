@@ -1,3 +1,4 @@
 When the player makes a selection, First the column array has to be fillid in using isert.column(0.X or Y)
 Then based on the length of the array the table has to be changed unign row(6-(length+1))
 After that using the calculated answer above, the row number is determined and the item (columnSelected-1 = XorYSelected)
+_____DONE

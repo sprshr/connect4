@@ -1,11 +1,14 @@
+import random
 print("connect4 By Sepehr Sahraian")
 print("AP CSP Mr. Keithley")
 print('')
 
 
 #global var
+
 global columns
 global rows
+global moves
 
 
 columnNumber = (
@@ -32,6 +35,8 @@ columns = [], [], [], [], [], [], []
 xSelected = "|  X  |"
 oSelected = "|  O  |"
 
+# game functions
+
 
 def printTable():
     print('')
@@ -57,17 +62,34 @@ def selection():
 
 
 def changeColumns():
-    columns[selectedColumn - 1].insert(0, "O")
+    columns[selectedColumn - 1].insert(0, "X")
 
 
-def changetable():
+def changeTable():
     rows[5-((len(columns[selectedColumn-1]))-1)
          ][selectedColumn - 1] = xSelected
 
 
+def computerPlays():
+    computerChoice = random.randint(0, 6)
+    while len(columns[computerChoice]) >= 6:
+        computerChoice = random.randint(0, 6)
+    columns[computerChoice].insert(0, "O")
+    rows[5-((len(columns[computerChoice]))-1)
+         ][computerChoice] = oSelected
+
+
 print("You're X Let's go!")
-printTable()
-selection()
-changeColumns()
-changetable()
-printTable()
+
+
+# game loop
+moves = 0
+while moves < 42:
+    printTable()
+    selection()
+    changeColumns()
+    changeTable()
+    moves += 1
+    computerPlays()
+    moves += 1
+    print(columns)
