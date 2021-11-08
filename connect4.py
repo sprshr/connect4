@@ -59,6 +59,13 @@ def selection():
     print("Make a Selection 1-7")
     global selectedColumn
     selectedColumn = int(input())
+    # input check
+    while selectedColumn > 7:
+        print("Select a Number Between the Given Range")
+        selectedColumn = int(input())
+    while len(columns[selectedColumn-1]) >= 6:
+        print("Column Selected Is Full! Try Agian")
+        selectedColumn = int(input())
 
 
 def changeColumns():
@@ -68,6 +75,8 @@ def changeColumns():
 def changeTable():
     rows[5-((len(columns[selectedColumn-1]))-1)
          ][selectedColumn - 1] = xSelected
+
+# this functions lets the computer to pick a column based on lists. There is no 7
 
 
 def computerPlays():
@@ -92,4 +101,5 @@ while moves < 42:
     moves += 1
     computerPlays()
     moves += 1
-    print(columns)
+printTable()
+print("Game Tied")
