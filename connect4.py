@@ -4,17 +4,18 @@ print("AP CSP Mr. Keithley")
 print('')
 
 
-#global var
+# global var
 
-global columns
-global rows
 global moves
+userWon = False
+computerWon = False
 
 
 columnNumber = (
     "   1   ", "   2   ", "   3   ", "   4   ", "   5   ", "   6   ", "   7   "
 )
 
+# visual game board
 rows = [[
     "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
 ], [
@@ -29,6 +30,7 @@ rows = [[
     "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
 ]]
 
+# data is stored here
 columns = [], [], [], [], [], [], []
 
 
@@ -57,35 +59,49 @@ def printTable():
 
 def selection():
     print("Make a Selection 1-7")
-    global selectedColumn
-    selectedColumn = int(input())
+    global selectedIndex
+    selectedIndex = int(input())-1
     # input check
-    while selectedColumn > 7:
+    while selectedIndex > 6:
         print("Select a Number Between the Given Range")
-        selectedColumn = int(input())
-    while len(columns[selectedColumn-1]) >= 6:
+        selectedIndex = int(input())-1
+    while len(columns[selectedIndex]) >= 6:
         print("Column Selected Is Full! Try Agian")
-        selectedColumn = int(input())
+        selectedIndex = int(input()) - 1
+
+
+def checkPlayerWin():
+    # if all 4 discs are in the same columns
+    if len(columns[selectedIndex]) >= 4:
+        if columns[selectedIndex][0] == columns[selectedIndex][1] == columns[selectedIndex][2] == columns[selectedIndex][3]:
+            return True
+    # if marbles horizontally match
 
 
 def changeColumns():
-    columns[selectedColumn - 1].insert(0, "X")
+    columns[selectedIndex].insert(0, "X")
 
 
 def changeTable():
-    rows[5-((len(columns[selectedColumn-1]))-1)
-         ][selectedColumn - 1] = xSelected
-
+    rows[5-((len(columns[selectedIndex]))-1)
+         ][selectedIndex] = xSelected
 # this functions lets the computer to pick a column based on lists. There is no 7
 
 
 def computerPlays():
+    global computerChoice
     computerChoice = random.randint(0, 6)
     while len(columns[computerChoice]) >= 6:
         computerChoice = random.randint(0, 6)
     columns[computerChoice].insert(0, "O")
     rows[5-((len(columns[computerChoice]))-1)
          ][computerChoice] = oSelected
+
+
+def checkComputerWin():
+    if len(columns[computerChoice]) >= 4:
+        if columns[computerChoice][0] == columns[computerChoice][1] == columns[computerChoice][2] == columns[computerChoice][3]:
+            return True
 
 
 print("You're X Let's go!")
@@ -98,8 +114,27 @@ while moves < 42:
     selection()
     changeColumns()
     changeTable()
+    if checkPlayerWin():
+        userWon = True
+        break
     moves += 1
     computerPlays()
+    if checkComputerWin():
+        computerWon = True
+        break
     moves += 1
+
 printTable()
-print("Game Tied")
+
+# following statements determine how the game has ended
+
+if userWon:
+    print('')
+    print("You Won, Good Job!")
+
+if computerWon:
+    print('')
+    print("I Won!")
+
+if moves >= 42:
+    print("Game Tied!")
