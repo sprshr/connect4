@@ -1,4 +1,15 @@
 import random
+print(r"""\
+
+
+                                        _    _  _   
+                                       | |  | || |  
+   ___  ___   _ __   _ __    ___   ___ | |_ | || |_ 
+  / __|/ _ \ | '_ \ | '_ \  / _ \ / __|| __||__   _|
+ | (__| (_) || | | || | | ||  __/| (__ | |_    | |  
+  \___|\___/ |_| |_||_| |_| \___| \___| \__|   |_|  
+                                                
+            """)
 print("connect4 By Sepehr Sahraian")
 print("AP CSP Mr. Keithley")
 print('')
@@ -130,11 +141,13 @@ printTable()
 
 if userWon:
     print('')
-    print("You Won, Good Job!")
+    print("You Won")
+    print("Good Job!1")
 
 if computerWon:
     print('')
     print("I Won!")
 
 if moves >= 42:
+    print('1')
     print("Game Tied!")
