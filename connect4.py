@@ -73,7 +73,7 @@ def selection():
     global selectedIndex
     selectedIndex = int(input())-1
     # input check
-    while selectedIndex > 6:
+    while selectedIndex > 6 or selectedIndex < 0:
         print("Select a Number Between the Given Range")
         selectedIndex = int(input())-1
     while len(columns[selectedIndex]) >= 6:
