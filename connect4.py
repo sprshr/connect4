@@ -87,6 +87,38 @@ def checkPlayerWin():
         if columns[selectedIndex][0] == columns[selectedIndex][1] == columns[selectedIndex][2] == columns[selectedIndex][3]:
             return True
     # if marbles horizontally match
+    if selectedIndex >= 0 and selectedIndex <= 3:
+        if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
+            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
+                if len(columns[selectedIndex+1]) <= len(columns[selectedIndex+2]):
+                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2]:
+                        if len(columns[selectedIndex+2]) <= len(columns[selectedIndex+3]):
+                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+3]:
+                                return True
+    if selectedIndex >= 1 and selectedIndex <= 4:
+        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
+            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
+                if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
+                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
+                        if len(columns[selectedIndex+1]) <= len(columns[selectedIndex+2]):
+                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2]:
+                                return True
+    if selectedIndex >= 2 and selectedIndex <= 5:
+        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
+            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
+                if len(columns[selectedIndex-1]) <= len(columns[selectedIndex-2]):
+                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2]:
+                        if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
+                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
+                                return True
+    if selectedIndex >= 3 and selectedIndex <= 6:
+        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
+            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
+                if len(columns[selectedIndex-1]) <= len(columns[selectedIndex-2]):
+                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2]:
+                        if len(columns[selectedIndex-2]) <= len(columns[selectedIndex-3]):
+                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-3]:
+                                return True
 
 
 def changeColumns():
@@ -94,8 +126,7 @@ def changeColumns():
 
 
 def changeTable():
-    rows[5-((len(columns[selectedIndex]))-1)
-         ][selectedIndex] = xSelected
+    rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] = xSelected
 # this functions lets the computer to pick a column based on lists. There is no 7
 
 
