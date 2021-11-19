@@ -66,120 +66,6 @@ def selection():
         selectedIndex = int(input()) - 1
 
 
-def checkPlayerWin():
-    # if all 4 discs are in the same columns
-    if len(columns[selectedIndex]) >= 4:
-        if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex][len(columns[selectedIndex])-2] == columns[selectedIndex][len(columns[selectedIndex])-3] == columns[selectedIndex][len(columns[selectedIndex])-4]:
-            return True
-    # if marbles horizontally match
-    if selectedIndex >= 0 and selectedIndex <= 3:
-        if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
-            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
-                if len(columns[selectedIndex+1]) <= len(columns[selectedIndex+2]):
-                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2]:
-                        if len(columns[selectedIndex+2]) <= len(columns[selectedIndex+3]):
-                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+3]:
-                                return True
-    if selectedIndex >= 1 and selectedIndex <= 4:
-        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
-            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
-                if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
-                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
-                        if len(columns[selectedIndex+1]) <= len(columns[selectedIndex+2]):
-                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+2]:
-                                return True
-    if selectedIndex >= 2 and selectedIndex <= 5:
-        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
-            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
-                if len(columns[selectedIndex-1]) <= len(columns[selectedIndex-2]):
-                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2]:
-                        if len(columns[selectedIndex]) <= len(columns[selectedIndex+1]):
-                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex+1]:
-                                return True
-    if selectedIndex >= 3 and selectedIndex <= 6:
-        if len(columns[selectedIndex]) <= len(columns[selectedIndex-1]):
-            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1]:
-                if len(columns[selectedIndex-1]) <= len(columns[selectedIndex-2]):
-                    if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-1] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2]:
-                        if len(columns[selectedIndex-2]) <= len(columns[selectedIndex-3]):
-                            if rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-2] == rows[5-((len(columns[selectedIndex]))-1)][selectedIndex-3]:
-                                return True
-    # diagonally left to right upwards
-    # 1 in the first column
-    if selectedIndex <= 3:
-        if len(columns[selectedIndex+1]) > len(columns[selectedIndex]):
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])]:
-                if len(columns[selectedIndex+2]) > len(columns[selectedIndex+1]):
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+2][len(columns[selectedIndex])+1]:
-                        if len(columns[selectedIndex+3]) > len(columns[selectedIndex+2]):
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+3][len(columns[selectedIndex])+2]:
-                                return True
-    # 2 in the second column
-    if selectedIndex >= 1 and selectedIndex <= 4 and len(columns[selectedIndex]) >= 2:
-        if (len(columns[selectedIndex]) - len(columns[selectedIndex-1])) <= 1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])-2]:
-                if len(columns[selectedIndex+1]) > len(columns[selectedIndex]):
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])]:
-                        if len(columns[selectedIndex+2]) > len(columns[selectedIndex+1]):
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+2][len(columns[selectedIndex])+1]:
-                                return True
-    # 3 in the third column
-    if selectedIndex >= 2 and selectedIndex <= 5 and len(columns[selectedIndex]) >= 3:
-        if (len(columns[selectedIndex]) - len(columns[selectedIndex-1])) <= 1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])-2]:
-                if (len(columns[selectedIndex]) - len(columns[selectedIndex-2])) <= 2:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-2][len(columns[selectedIndex])-3]:
-                        if len(columns[selectedIndex+1]) > len(columns[selectedIndex]):
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])]:
-                                return True
-    # 4 in the fourth column
-    if selectedIndex >= 3:
-        if (len(columns[selectedIndex]) - len(columns[selectedIndex-1])) <= 1 and len(columns[selectedIndex]) >= 4:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])-2]:
-                if (len(columns[selectedIndex]) - len(columns[selectedIndex-2])) <= 2:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-2][len(columns[selectedIndex])-3]:
-                        if (len(columns[selectedIndex]) - len(columns[selectedIndex-3])) <= 3:
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-3][len(columns[selectedIndex])-4]:
-                                return True
-    # diagonally left to right downwards
-    # 4 in the first column
-    if selectedIndex <= 3:
-        if len(columns[selectedIndex]) >= 4 and (len(columns[selectedIndex])-len(columns[selectedIndex+1])) <= 1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])-2]:
-                if (len(columns[selectedIndex+1])-len(columns[selectedIndex+2])) <= 1:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+2][len(columns[selectedIndex])-3]:
-                        if (len(columns[selectedIndex+2])-len(columns[selectedIndex+3])) <= 1:
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+3][len(columns[selectedIndex])-4]:
-                                return True
-    # 3 in the second column
-    if selectedIndex >= 1 and selectedIndex <= 4 and len(columns[selectedIndex]) >= 3:
-        if (len(columns[selectedIndex]) - len(columns[selectedIndex+1])) <= 1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])-2]:
-                if (len(columns[selectedIndex+1]) - len(columns[selectedIndex+2])) <= 1:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+2][len(columns[selectedIndex])-3]:
-                        if len(columns[selectedIndex-1]) >= len(columns[selectedIndex])+1:
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])]:
-                                return True
-    # 2 in the third column
-    if selectedIndex >= 2 and selectedIndex <= 5 and len(columns[selectedIndex]) >= 2:
-        if (len(columns[selectedIndex]) - len(columns[selectedIndex+1])) <= 1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex+1][len(columns[selectedIndex])-2]:
-                if len(columns[selectedIndex-1]) >= len(columns[selectedIndex])+1:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])]:
-                        if len(columns[selectedIndex-2]) >= len(columns[selectedIndex])+2:
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-2][len(columns[selectedIndex])+1]:
-                                return True
-    # 1 in the fourth column
-    if selectedIndex >= 3:
-        if len(columns[selectedIndex-1]) >= len(columns[selectedIndex])+1:
-            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-1][len(columns[selectedIndex])]:
-                if len(columns[selectedIndex-2]) >= len(columns[selectedIndex])+2:
-                    if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-2][len(columns[selectedIndex])+1]:
-                        if len(columns[selectedIndex-3]) >= len(columns[selectedIndex])+3:
-                            if columns[selectedIndex][len(columns[selectedIndex])-1] == columns[selectedIndex-3][len(columns[selectedIndex])+2]:
-                                return True
-
-
 def changeColumns():
     columns[selectedIndex].append("X")
 
@@ -199,117 +85,117 @@ def computerPlays():
 	
 
 
-def checkComputerWin():
+def checkWin(index):
 	# if all 4 discs are in the same columns
-    if len(columns[computerChoice]) >= 4:
-        if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice][len(columns[computerChoice])-2] == columns[computerChoice][len(columns[computerChoice])-3] == columns[computerChoice][len(columns[computerChoice])-4]:
+    if len(columns[index]) >= 4:
+        if columns[index][len(columns[index])-1] == columns[index][len(columns[index])-2] == columns[index][len(columns[index])-3] == columns[index][len(columns[index])-4]:
             return True
     # if marbles horizontally match
-    if computerChoice >= 0 and computerChoice <= 3:
-        if len(columns[computerChoice]) <= len(columns[computerChoice+1]):
-            if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+1]:
-                if len(columns[computerChoice+1]) <= len(columns[computerChoice+2]):
-                    if rows[5-((len(columns[computerChoice]))-1)][computerChoice+1] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+2]:
-                        if len(columns[computerChoice+2]) <= len(columns[computerChoice+3]):
-                            if rows[5-((len(columns[computerChoice]))-1)][computerChoice+2] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+3]:
+    if index >= 0 and index <= 3:
+        if len(columns[index]) <= len(columns[index+1]):
+            if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index+1]:
+                if len(columns[index+1]) <= len(columns[index+2]):
+                    if rows[5-((len(columns[index]))-1)][index+1] == rows[5-((len(columns[index]))-1)][index+2]:
+                        if len(columns[index+2]) <= len(columns[index+3]):
+                            if rows[5-((len(columns[index]))-1)][index+2] == rows[5-((len(columns[index]))-1)][index+3]:
                                 return True
-    if computerChoice >= 1 and computerChoice <= 4:
-        if len(columns[computerChoice]) <= len(columns[computerChoice-1]):
-            if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-1]:
-                if len(columns[computerChoice]) <= len(columns[computerChoice+1]):
-                    if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+1]:
-                        if len(columns[computerChoice+1]) <= len(columns[computerChoice+2]):
-                            if rows[5-((len(columns[computerChoice]))-1)][computerChoice+1] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+2]:
+    if index >= 1 and index <= 4:
+        if len(columns[index]) <= len(columns[index-1]):
+            if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index-1]:
+                if len(columns[index]) <= len(columns[index+1]):
+                    if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index+1]:
+                        if len(columns[index+1]) <= len(columns[index+2]):
+                            if rows[5-((len(columns[index]))-1)][index+1] == rows[5-((len(columns[index]))-1)][index+2]:
                                 return True
-    if computerChoice >= 2 and computerChoice <= 5:
-        if len(columns[computerChoice]) <= len(columns[computerChoice-1]):
-            if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-1]:
-                if len(columns[computerChoice-1]) <= len(columns[computerChoice-2]):
-                    if rows[5-((len(columns[computerChoice]))-1)][computerChoice-1] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-2]:
-                        if len(columns[computerChoice]) <= len(columns[computerChoice+1]):
-                            if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice+1]:
+    if index >= 2 and index <= 5:
+        if len(columns[index]) <= len(columns[index-1]):
+            if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index-1]:
+                if len(columns[index-1]) <= len(columns[index-2]):
+                    if rows[5-((len(columns[index]))-1)][index-1] == rows[5-((len(columns[index]))-1)][index-2]:
+                        if len(columns[index]) <= len(columns[index+1]):
+                            if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index+1]:
                                 return True
-    if computerChoice >= 3 and computerChoice <= 6:
-        if len(columns[computerChoice]) <= len(columns[computerChoice-1]):
-            if rows[5-((len(columns[computerChoice]))-1)][computerChoice] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-1]:
-                if len(columns[computerChoice-1]) <= len(columns[computerChoice-2]):
-                    if rows[5-((len(columns[computerChoice]))-1)][computerChoice-1] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-2]:
-                        if len(columns[computerChoice-2]) <= len(columns[computerChoice-3]):
-                            if rows[5-((len(columns[computerChoice]))-1)][computerChoice-2] == rows[5-((len(columns[computerChoice]))-1)][computerChoice-3]:
+    if index >= 3 and index <= 6:
+        if len(columns[index]) <= len(columns[index-1]):
+            if rows[5-((len(columns[index]))-1)][index] == rows[5-((len(columns[index]))-1)][index-1]:
+                if len(columns[index-1]) <= len(columns[index-2]):
+                    if rows[5-((len(columns[index]))-1)][index-1] == rows[5-((len(columns[index]))-1)][index-2]:
+                        if len(columns[index-2]) <= len(columns[index-3]):
+                            if rows[5-((len(columns[index]))-1)][index-2] == rows[5-((len(columns[index]))-1)][index-3]:
                                 return True
     # diagonally left to right upwards
     # 1 in the first column
-    if computerChoice <= 3:
-        if len(columns[computerChoice+1]) > len(columns[computerChoice]):
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])]:
-                if len(columns[computerChoice+2]) > len(columns[computerChoice+1]):
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+2][len(columns[computerChoice])+1]:
-                        if len(columns[computerChoice+3]) > len(columns[computerChoice+2]):
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+3][len(columns[computerChoice])+2]:
+    if index <= 3:
+        if len(columns[index+1]) > len(columns[index]):
+            if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])]:
+                if len(columns[index+2]) > len(columns[index+1]):
+                    if columns[index][len(columns[index])-1] == columns[index+2][len(columns[index])+1]:
+                        if len(columns[index+3]) > len(columns[index+2]):
+                            if columns[index][len(columns[index])-1] == columns[index+3][len(columns[index])+2]:
                                 return True
     # 2 in the second column
-    if computerChoice >= 1 and computerChoice <= 4 and len(columns[computerChoice]) >= 2:
-        if (len(columns[computerChoice]) - len(columns[computerChoice-1])) <= 1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])-2]:
-                if len(columns[computerChoice+1]) > len(columns[computerChoice]):
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])]:
-                        if len(columns[computerChoice+2]) > len(columns[computerChoice+1]):
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+2][len(columns[computerChoice])+1]:
+    if index >= 1 and index <= 4 and len(columns[index]) >= 2:
+        if (len(columns[index]) - len(columns[index-1])) <= 1:
+            if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])-2]:
+                if len(columns[index+1]) > len(columns[index]):
+                    if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])]:
+                        if len(columns[index+2]) > len(columns[index+1]):
+                            if columns[index][len(columns[index])-1] == columns[index+2][len(columns[index])+1]:
                                 return True
     # 3 in the third column
-    if computerChoice >= 2 and computerChoice <= 5 and len(columns[computerChoice]) >= 3:
-        if (len(columns[computerChoice]) - len(columns[computerChoice-1])) <= 1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])-2]:
-                if (len(columns[computerChoice]) - len(columns[computerChoice-2])) <= 2:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-2][len(columns[computerChoice])-3]:
-                        if len(columns[computerChoice+1]) > len(columns[computerChoice]):
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])]:
+    if index >= 2 and index <= 5 and len(columns[index]) >= 3:
+        if (len(columns[index]) - len(columns[index-1])) <= 1:
+            if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])-2]:
+                if (len(columns[index]) - len(columns[index-2])) <= 2:
+                    if columns[index][len(columns[index])-1] == columns[index-2][len(columns[index])-3]:
+                        if len(columns[index+1]) > len(columns[index]):
+                            if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])]:
                                 return True
     # 4 in the fourth column
-    if computerChoice >= 3:
-        if (len(columns[computerChoice]) - len(columns[computerChoice-1])) <= 1 and len(columns[computerChoice]) >= 4:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])-2]:
-                if (len(columns[computerChoice]) - len(columns[computerChoice-2])) <= 2:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-2][len(columns[computerChoice])-3]:
-                        if (len(columns[computerChoice]) - len(columns[computerChoice-3])) <= 3:
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-3][len(columns[computerChoice])-4]:
+    if index >= 3:
+        if (len(columns[index]) - len(columns[index-1])) <= 1 and len(columns[index]) >= 4:
+            if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])-2]:
+                if (len(columns[index]) - len(columns[index-2])) <= 2:
+                    if columns[index][len(columns[index])-1] == columns[index-2][len(columns[index])-3]:
+                        if (len(columns[index]) - len(columns[index-3])) <= 3:
+                            if columns[index][len(columns[index])-1] == columns[index-3][len(columns[index])-4]:
                                 return True
     # diagonally left to right downwards
     # 4 in the first column
-    if computerChoice <= 3:
-        if len(columns[computerChoice]) >= 4 and (len(columns[computerChoice])-len(columns[computerChoice+1])) <= 1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])-2]:
-                if (len(columns[computerChoice+1])-len(columns[computerChoice+2])) <= 1:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+2][len(columns[computerChoice])-3]:
-                        if (len(columns[computerChoice+2])-len(columns[computerChoice+3])) <= 1:
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+3][len(columns[computerChoice])-4]:
+    if index <= 3:
+        if len(columns[index]) >= 4 and (len(columns[index])-len(columns[index+1])) <= 1:
+            if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])-2]:
+                if (len(columns[index+1])-len(columns[index+2])) <= 1:
+                    if columns[index][len(columns[index])-1] == columns[index+2][len(columns[index])-3]:
+                        if (len(columns[index+2])-len(columns[index+3])) <= 1:
+                            if columns[index][len(columns[index])-1] == columns[index+3][len(columns[index])-4]:
                                 return True
     # 3 in the second column
-    if computerChoice >= 1 and computerChoice <= 4 and len(columns[computerChoice]) >= 3:
-        if (len(columns[computerChoice]) - len(columns[computerChoice+1])) <= 1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])-2]:
-                if (len(columns[computerChoice+1]) - len(columns[computerChoice+2])) <= 1:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+2][len(columns[computerChoice])-3]:
-                        if len(columns[computerChoice-1]) >= len(columns[computerChoice])+1:
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])]:
+    if index >= 1 and index <= 4 and len(columns[index]) >= 3:
+        if (len(columns[index]) - len(columns[index+1])) <= 1:
+            if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])-2]:
+                if (len(columns[index+1]) - len(columns[index+2])) <= 1:
+                    if columns[index][len(columns[index])-1] == columns[index+2][len(columns[index])-3]:
+                        if len(columns[index-1]) >= len(columns[index])+1:
+                            if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])]:
                                 return True
     # 2 in the third column
-    if computerChoice >= 2 and computerChoice <= 5 and len(columns[computerChoice]) >= 2:
-        if (len(columns[computerChoice]) - len(columns[computerChoice+1])) <= 1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice+1][len(columns[computerChoice])-2]:
-                if len(columns[computerChoice-1]) >= len(columns[computerChoice])+1:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])]:
-                        if len(columns[computerChoice-2]) >= len(columns[computerChoice])+2:
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-2][len(columns[computerChoice])+1]:
+    if index >= 2 and index <= 5 and len(columns[index]) >= 2:
+        if (len(columns[index]) - len(columns[index+1])) <= 1:
+            if columns[index][len(columns[index])-1] == columns[index+1][len(columns[index])-2]:
+                if len(columns[index-1]) >= len(columns[index])+1:
+                    if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])]:
+                        if len(columns[index-2]) >= len(columns[index])+2:
+                            if columns[index][len(columns[index])-1] == columns[index-2][len(columns[index])+1]:
                                 return True
     # 1 in the fourth column
-    if computerChoice >= 3:
-        if len(columns[computerChoice-1]) >= len(columns[computerChoice])+1:
-            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-1][len(columns[computerChoice])]:
-                if len(columns[computerChoice-2]) >= len(columns[computerChoice])+2:
-                    if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-2][len(columns[computerChoice])+1]:
-                        if len(columns[computerChoice-3]) >= len(columns[computerChoice])+3:
-                            if columns[computerChoice][len(columns[computerChoice])-1] == columns[computerChoice-3][len(columns[computerChoice])+2]:
+    if index >= 3:
+        if len(columns[index-1]) >= len(columns[index])+1:
+            if columns[index][len(columns[index])-1] == columns[index-1][len(columns[index])]:
+                if len(columns[index-2]) >= len(columns[index])+2:
+                    if columns[index][len(columns[index])-1] == columns[index-2][len(columns[index])+1]:
+                        if len(columns[index-3]) >= len(columns[index])+3:
+                            if columns[index][len(columns[index])-1] == columns[index-3][len(columns[index])+2]:
                                 return True
 
 print("You're X Let's go!")
@@ -343,12 +229,12 @@ while True:
 		selection()
 		changeColumns()
 		changeTable()
-		if checkPlayerWin():
+		if checkWin(selectedIndex):
 			userWon = True
 			break
 		moves += 1
 		computerPlays()
-		if checkComputerWin():
+		if checkWin(computerChoice):
 			computerWon = True
 			break
 		moves += 1
