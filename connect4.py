@@ -191,7 +191,7 @@ def changeTable():
 def computerPlays():
     # this functions lets the computer to pick a column based on lists. There is no 7
     global computerChoice
-    computerChoice = random.randint(0, 5)
+    computerChoice = random.randint(0, 6)
     while len(columns[computerChoice]) >= 6:
         computerChoice = random.randint(0, 6)
     columns[computerChoice].append("O")
