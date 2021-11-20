@@ -35,7 +35,7 @@ oSelected = "|  O  |"
 # game functions
 
 
-def printTable():
+def printBoard():
     print('')
     print(columnNumber)
     print('')
@@ -69,7 +69,7 @@ def changeColumns():
     columns[selectedIndex].append("X")
 
 
-def changeTable():
+def changeBoard():
     rows[5-((len(columns[selectedIndex]))-1)][selectedIndex] = xSelected
 
 
@@ -206,9 +206,9 @@ print("O: ", OScore)
 # game loop
 while True:
     moves = 0
-    # data is stores here
+    # data is stored here
     columns = [], [], [], [], [], [], []
-    # displayed table
+    # displayed board
     rows = [[
         "|     |", "|     |", "|     |", "|     |", "|     |", "|     |", "|     |"
     ], [
@@ -224,10 +224,10 @@ while True:
     ]]
 
     while moves < 42:
-        printTable()
+        printBoard()
         selection()
         changeColumns()
-        changeTable()
+        changeBoard()
         if checkWin(selectedIndex):
             userWon = True
             break
@@ -238,7 +238,7 @@ while True:
             break
         moves += 1
 
-    printTable()
+    printBoard()
 
     # following statements determine how the game has ended
 
