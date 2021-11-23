@@ -17,9 +17,6 @@ print('')
 
 # global var
 
-global moves
-userWon = False
-computerWon = False
 XScore = 0
 OScore = 0
 
@@ -205,6 +202,8 @@ print("O: ", OScore)
 
 # game loop
 while True:
+    userWon = False
+    computerWon = False
     moves = 0
     # data is stored here
     columns = [], [], [], [], [], [], []
